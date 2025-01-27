@@ -1,0 +1,1 @@
+const connectionSring = 'mongodb+srv://georgegarsevanidi:<db_password>@nodeexpresslearn.ot0oy.mongodb.net/?retryWrites=true&w=majority&appName=NodeExpressLearn'
