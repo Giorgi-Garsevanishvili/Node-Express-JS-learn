@@ -1,14 +1,18 @@
+const Task = require("../models/tasks");
+
 const getAllTasks = (req, res) => {
   res.status(200).send("get all task");
 };
 
-const createTask = (req, res) => {
-  const { name } = req.body;
+const createTask = async (req, res) => {
+  const task = await Task.create(req.body);
 
-  if (!name) {
-    return res.status(200).json({ success: true, data: "Please Provide Name" });
-  }
-  res.status(200).json({ success: true, data: name });
+  //   const { name } = req.body;
+
+  //   if (!name) {
+  //     return res.status(200).json({ success: true, data: "Please Provide Name" });
+  //   }
+  res.status(201).json({ task });
 };
 
 const getTask = (req, res) => {
