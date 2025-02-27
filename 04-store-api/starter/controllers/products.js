@@ -1,5 +1,10 @@
 const Products = require("../models/product");
 
+const addItem = async (req, res) => {
+  const product = Products.create(req.body)
+  res.status(200).json(product)
+};
+
 const getAllProducts = async (req, res) => {
   const { featured, company, name, sort, fields, numericFilters } = req.query;
   const queryObject = {};
@@ -34,9 +39,9 @@ const getAllProducts = async (req, res) => {
 
     const options = ["price", "rating"];
     filters = filters.split(",").forEach((item) => {
-      const [fields, operator, value] = item.split('-')
-      if(options.includes(fields)){
-        queryObject[fields]={[operator]: Number(value)}
+      const [fields, operator, value] = item.split("-");
+      if (options.includes(fields)) {
+        queryObject[fields] = { [operator]: Number(value) };
       }
     });
   }
@@ -77,4 +82,5 @@ const getAllProductsStatic = async (req, res) => {
 module.exports = {
   getAllProducts,
   getAllProductsStatic,
+  addItem
 };
