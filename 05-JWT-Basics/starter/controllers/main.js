@@ -1,0 +1,26 @@
+
+const jwt = require('jsonwebtoken')
+const CustomAPIError = require('../errors/custom-error')
+
+const login = async (req,res) => {
+  const {username, password} = req.body
+
+  if(!username || !password){
+    throw new CustomAPIError('plese enter name and password', 404)
+  }
+  console.log(username,password)
+
+  const id = new Date().getDate()
+
+  const token = jwt.sign({id, username}, process.env.JWT_SECRET,{expiresIn:'30d'})
+  res.status(200).json({msg:`here is your token mr/ms ${username}:`, token})
+}
+
+const dashboard = (req, res) => {
+  const luckyNumber = Math.floor(Math.random()*99)
+  res.status(200).json({msg: `Hello Jon Doe`, secret:`Here is requseted secter code ${luckyNumber}`})
+}
+
+module.exports= {
+  login,dashboard
+}
