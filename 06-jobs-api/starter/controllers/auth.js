@@ -20,6 +20,11 @@ const login = async (req, res) => {
     if(!user) {
       throw new UnauthenticatedError('Bad Credentials')
     }
+
+    const isPasswordCorrect = await user.comparePassword(password)
+    if(!isPasswordCorrect){
+      throw new UnauthenticatedError('Bad Credintials')
+    }
     
     const token = user.createJWT();
     res.status(StatusCodes.OK).json({user: {name: user.name}, token})

@@ -1,26 +1,26 @@
-const {StatusCodes} = require('http-status-codes')
+const { StatusCodes } = require("http-status-codes");
 
 const getAllJobt = (req, res) => {
-  res.send('get all jobs')
-}
+  res.send("get all jobs");
+};
 
 const getJob = (req, res) => {
-  res.send('get Job')
-}
+  res.send("get Job");
+};
 
 const createJob = (req, res) => {
-  res.send('create job')
-}
+  res.send(req.user);
+};
 const updateJob = (req, res) => {
-  res.send('update job')
-}
+  res.send("update job");
+};
 const deleteJob = (req, res) => {
-  res.send('delete job')
-}
+  res.send("delete job");
+};
 module.exports = {
   getAllJobt,
   getJob,
   deleteJob,
   updateJob,
-  createJob
-}
+  createJob,
+};
