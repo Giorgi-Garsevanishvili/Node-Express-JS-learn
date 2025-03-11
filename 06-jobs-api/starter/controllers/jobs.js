@@ -9,7 +9,8 @@ const getJob = (req, res) => {
 };
 
 const createJob = (req, res) => {
-  res.send(req.user);
+  const token = req.headers.authorization
+  res.status(StatusCodes.OK).json({user:req.user, token});
 };
 const updateJob = (req, res) => {
   res.send("update job");
